@@ -19,6 +19,12 @@
 #define HAMMER_ALLOCATOR__H__
 #include <sys/types.h>
 
+#ifdef _MSC_VER
+#define EXPORT __declspec(dllexport)
+#else
+#define EXPORT __attribute__ ((visibility ("default")))
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -40,9 +46,7 @@ HArena *h_new_arena(HAllocator* allocator, size_t block_size); // pass 0 for def
 # else
 #   define ATTR_MALLOC(n)
 # endif
-#elif defined SWIG
-# define ATTR_MALLOC(n)
-#elif defined __GNUC__
+#elif defined __GNUC__ && !defined SWIG && !defined _MSC_VER
 # define ATTR_MALLOC(n) __attribute__((malloc, alloc_size(2)))
 #else
 # define ATTR_MALLOC(n)
