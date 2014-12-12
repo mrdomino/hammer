@@ -1,3 +1,6 @@
+#ifndef HAMMER_EXPORT__H__
+#define HAMMER_EXPORT__H__
+
 #if defined _MSC_VER
 # if defined BUILDING_HAMMER_DLL
 #   define H_EXPORT __declspec(dllexport)
@@ -15,3 +18,5 @@
 #   define H_EXPORT
 # endif
 #endif
+
+#endif // #ifndef HAMMER_EXPORT__H__
