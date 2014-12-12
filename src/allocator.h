@@ -53,4 +53,4 @@ H_EXPORT void h_allocator_stats(HArena *arena, HArenaStats *stats);
 }
 #endif
 
-#endif // #ifndef LIB_ALLOCATOR__H__
+#endif // #ifndef HAMMER_ALLOCATOR__H__
