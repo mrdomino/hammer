@@ -187,8 +187,13 @@ static void unamb_sub(const HParsedToken* tok, struct result_buf *buf) {
   }
     break;
   default:
-    fprintf(stderr, "Unexpected token type %d\n", tok->token_type);
-    assert_message(0, "Should not reach here.");
+    if (tok->token_type >= TT_USER) {
+      append_buf(buf, "<u>", 3);
+    }
+    else {
+      fprintf(stderr, "Unexpected token type %d\n", tok->token_type);
+      assert_message(0, "Should not reach here.");
+    }
   }
 }
   
